@@ -12,6 +12,8 @@ jobs:
 
         - name: checkout repo content
           uses: actions/checkout@v2
+          with:
+            token: ${{ secrets.PERSONAL_ACCESS_TOKEN }} 
 
         - name: setup python
           uses: actions/setup-python@v4
@@ -29,8 +31,5 @@ jobs:
             git diff-index --quiet HEAD || (git commit -a -m "update numbers" --allow-empty)
 
         - name: push changes
-          uses: ad-m/github-push-action@master
-          with:
-            github_token: ${{secrets.PERSONAL_ACCESS_TOKEN}}
-            branch: main
+          run: git push
 
