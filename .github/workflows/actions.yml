@@ -1,0 +1,21 @@
+name: run main.py
+
+on:
+  schedule:
+    - cron: '10 * 26 4 *'
+
+jobs:
+  build:
+      runs-on: ubuntu-latest
+      steps:
+
+        - name: checkout repo content
+          uses: actions/checkout@v2
+
+        - name: setup python
+          uses: actions/setup-python@v4
+          with:
+            python-version: '3.9'
+
+        - name: execute py script
+          run: python main.py
