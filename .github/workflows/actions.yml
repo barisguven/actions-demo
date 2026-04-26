@@ -29,5 +29,8 @@ jobs:
             git diff-index --quiet HEAD || (git commit -a -m "update numbers" --allow-empty)
 
         - name: push changes
-          run: git push 
+          uses: ad-m/github-push-action@master
+          with:
+            github_token: ${{secrets.PERSONAL_ACCESS_TOKEN}}
+            branch: main
 
